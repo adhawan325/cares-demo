@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.non.cares.web.perpetrator.PerpetratorEdit"
+        datasource="perpetratorDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.non.cares.web.perpetrator">
+    <dsContext>
+        <datasource id="perpetratorDs"
+                    class="com.non.cares.entity.Perpetrator"
+                    view="_local"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout 
+            spacing="true">
+        <groupBox id="groupBox"
+                  caption="Enter Perpetrator&apos;s Information"
+                  spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="perpetratorDs">
+                <column width="250px">
+                    <field property="firstName"/>
+                    <field property="approximateAge"/>
+                </column>
+                <column>
+                    <field property="lastName"/>
+                    <field property="countyOfResidence"/>
+                </column>
+            </fieldGroup>
+            <frame id="windowActions"
+                   screen="editWindowActions"
+                   width="AUTO"/>
+        </groupBox>
+    </layout>
+</window>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.non.cares.web.victim.VictimEdit"
+        datasource="victimDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.non.cares.web.victim">
+    <dsContext>
+        <datasource id="victimDs"
+                    class="com.non.cares.entity.Victim"
+                    view="victim-view"/>
+        <collectionDatasource id="incidentReportsDs"
+                              class="com.non.cares.entity.IncidentReport"
+                              view="incidentReport-view">
+            <query>
+                <![CDATA[select e from cares$IncidentReport e, cares$Allegation a, cares$Victim v
+where v.id = :ds$victimDs
+and a MEMBER OF e.allegation
+and v MEMBER OF a.victim]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <scrollBox>
+            <groupBox id="victimInfoBox"
+                      caption="Victim&apos;s Information"
+                      showAsPanel="true"
+                      spacing="true">
+                <fieldGroup id="fieldGroup"
+                            datasource="victimDs">
+                    <column width="250px">
+                        <field property="firstName"/>
+                        <field property="approximateAge"/>
+                    </column>
+                    <column>
+                        <field property="lastName"/>
+                        <field property="countyOfResidence"/>
+                    </column>
+                </fieldGroup>
+            </groupBox>
+            <groupBox id="incidentReports"
+                      caption="Incident Reports"
+                      showAsPanel="true"
+                      spacing="true">
+                <table id="incidentsTable"
+                       width="800px">
+                    <actions>
+                        <action id="edit"/>
+                    </actions>
+                    <columns>
+                        <column id="reporter"
+                                caption="Reported By"/>
+                        <column id="gAllegation"
+                                caption="Allegations"/>
+                        <column id="isEmergency"
+                                caption="Emergency?"/>
+                        <column id="contactMethod"/>
+                        <column id="createTs"
+                                caption="Reported On"/>
+                    </columns>
+                    <rows datasource="incidentReportsDs"/>
+                    <rowsCount/>
+                </table>
+                <frame id="windowActions"
+                       screen="editWindowActions"
+                       width="AUTO"/>
+            </groupBox>
+        </scrollBox>
+    </layout>
+</window>

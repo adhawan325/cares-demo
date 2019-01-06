@@ -1,0 +1,4 @@
+alter table CARES_PERSON alter column RELATION_TO_CHILD_ID rename to RELATION_TO_CHILD_ID__U80344 ^
+drop index IDX_CARES_PERSON_ON_RELATION_TO_CHILD ;
+alter table CARES_PERSON drop constraint FK_CARES_PERSON_ON_RELATION_TO_CHILD ;
+alter table CARES_PERSON add column RELATIONSHIP_TO_CHILD_ID varchar(36) ;

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.non.cares.web.incidentreport.IncidentReportEdit"
+        datasource="incidentReportDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.non.cares.web.incidentreport">
+    <dsContext>
+        <datasource id="incidentReportDs"
+                    class="com.non.cares.entity.IncidentReport"
+                    view="incidentReport-view">
+            <collectionDatasource id="allegationDs"
+                                  property="allegation"/>
+        </datasource>
+        <collectionDatasource id="contactMethodDs"
+                              class="com.non.rda.entity.ReferenceData">
+            <query>
+                <![CDATA[select e from nonrda$ReferenceData e where e.referenceCategory = 'contactMethod']]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="incidentReportDs">
+            <column width="250px">
+                <field caption="msg://isEmergency"
+                       property="isEmergency"/>
+                <field optionsDatasource="contactMethodDs"
+                       property="contactMethod"/>
+                <field property="reporter"/>
+                <field property="isMandatoryReporter"/>
+            </column>
+        </fieldGroup>
+        <groupBox id="allegationBox"
+                  caption="msg://com.non.cares.entity/IncidentReport.allegation">
+            <table id="allegationTable"
+                   height="200px"
+                   width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                </actions>
+                <columns>
+                    <column id="description"/>
+                    <column id="type"/>
+                </columns>
+                <rows datasource="allegationDs"/>
+                <buttonsPanel>
+                    <button action="allegationTable.create"/>
+                    <button action="allegationTable.edit"/>
+                    <button action="allegationTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

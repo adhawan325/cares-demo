@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.non.cares.web.incidentreport.IncidentReportBrowse"
+        focusComponent="incidentReportsTable"
+        lookupComponent="incidentReportsTable"
+        messagesPack="com.non.cares.web.incidentreport">
+    <dsContext>
+        <groupDatasource id="incidentReportsDs"
+                         class="com.non.cares.entity.IncidentReport"
+                         view="incidentReport-view">
+            <query>
+                <![CDATA[select e from cares$IncidentReport e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="incidentReportsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="incidentReportsTable"
+                datasource="incidentReportsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="incidentReportsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="gVictim"
+                        caption="Victim(s)"/>
+                <column id="gAllegation"
+                        caption="Allegations"/>
+                <column id="reporter"
+                        caption="Reported By"/>
+                <column id="isEmergency"
+                        caption="Emergency?"/>
+                <column id="contactMethod"/>
+            </columns>
+            <rows datasource="incidentReportsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="incidentReportsTable.create"/>
+                <button id="editBtn"
+                        action="incidentReportsTable.edit"/>
+                <button id="removeBtn"
+                        action="incidentReportsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

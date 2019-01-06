@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-cares">
+        <item screen="cares$IncidentReport.browse"
+              shortcut="ALT-C"/>
+        <item screen="wizard-example-1"/>
+        <separator/>
+        <item id="sec$ScreenHistory.browse"/>
+        <item id="settings"/>
+        <!--  <item screen="crm$Note.browse"/>-->
+        <!--<item screen="crm$PRARequest.calendar"/>-->
+        <item screen="cares$Perpetrator.browse"/>
+        <item screen="cares$Reporter.browse"/>
+        <item screen="cares$Victim.browse"/>
+    </menu>
+    <menu id="manage-workflow">
+        <item screen="bpm$ProcTask.lookup"/>
+    </menu>
+    <menu id="Reports">
+        <item screen="report$Report.run"/>
+        <item id="sys$FileDescriptor.browse"/>
+    </menu>
+    <menu id="System Administration">
+        <menu id="User Administration">
+            <item screen="sec$User.browse"/>
+            <item screen="sec$Role.browse"/>
+            <item screen="sec$Group.browse"/>
+        </menu>
+        <separator/>
+        <menu id="Workflow Administration">
+            <item screen="bpm$ProcModel.lookup"/>
+            <item screen="bpm$ProcDefinition.lookup"/>
+            <item screen="bpm$ProcInstance.lookup"/>
+            <item screen="bpm$ProcAttachmentType.lookup"/>
+            <item screen="stencilSetEditor"/>
+        </menu>
+        <separator/>
+        <menu id="Reports Administration">
+            <item screen="report$Report.browse"/>
+            <item screen="report$ReportGroup.browse"/>
+            <item screen="report$showChart"/>
+            <item screen="report$showPivotTable"/>
+            <item screen="report$showReportTable"/>
+        </menu>
+        <separator/>
+        <menu id="General Administration">
+            <item screen="nonrda$ReferenceData.browse"/>
+            <item screen="nondta$Rule.browse"/>
+            <separator/>
+            <item id="sys$Category.browse"/>
+            <item id="sec$UserSessionEntity.browse"/>
+            <item id="sys$LockInfo.browse"/>
+            <item id="sys$ScheduledTask.browse"/>
+            <item id="entityRestore"/>
+            <item id="entityInspector.browse"/>
+            <item id="appProperties"/>
+            <item id="jmxConsole"/>
+            <separator/>
+            <item id="entityLog"/>
+            <item id="sec$SessionLogEntry.browse"/>
+            <item id="sys$SendingMessage.browse"/>
+            <item id="serverLog"/>
+            <item id="performanceStatistics"/>
+            <menu id="Console Menu">
+                <item id="groovyConsole"/>
+                <item id="sqlConsole"/>
+                <item id="jpqlConsole"/>
+                <item id="ddcrd$DiagnoseExecutionLog.browse"/>
+            </menu>
+            <!--
+        <menu id="adminTools"
+              insertAfter="consoleMenu">
+            <item id="scriptGenerator"
+                  openType="NEW_TAB"
+                  screen="admintools$scriptGeneratorsResult"/>
+            <item id="shellExecutor"
+                  openType="NEW_TAB"
+                  screen="shell-executor"/>
+            <item id="sshTerminal"
+                  openType="NEW_TAB"
+                  screen="ssh-terminal"/>
+            <item id="configLoader"
+                  openType="DIALOG"
+                  screen="admintools$configLoader"/>
+            <separator/>
+            <item id="consoleScriptLoader"
+                  openType="NEW_TAB"
+                  screen="console-script-loader"/>
+        </menu>
+-->
+            <separator/>
+        </menu>
+        <separator/>
+        <menu id="help">
+            <item id="aboutWindow"
+                  openType="DIALOG"/>
+            <item id="printDomain"/>
+            <separator/>
+            <item id="logWindow"/>
+        </menu>
+    </menu>
+</menu-config>

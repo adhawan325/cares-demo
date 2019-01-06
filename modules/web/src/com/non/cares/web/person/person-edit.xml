@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.non.cares.web.person.PersonEdit"
+        datasource="personDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.non.cares.web.person">
+    <dsContext>
+        <datasource id="personDs"
+                    class="com.non.cares.entity.Person"
+                    view="person-view"/>
+        <collectionDatasource id="relationToChildDs"
+                              class="com.non.rda.entity.ReferenceData">
+            <query>
+                <![CDATA[select e from nonrda$ReferenceData e where e.referenceCategory = 'relationToChild']]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="countyOfResidenceDs"
+                              class="com.non.rda.entity.ReferenceData">
+            <query>
+                <![CDATA[select e from nonrda$ReferenceData e where e.referenceCategory = 'countyOfResidence']]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="personDs">
+            <column width="250px">
+                <field property="firstName"/>
+                <field property="lastName"/>
+                <field optionsDatasource="countyOfResidenceDs"
+                       property="countyOfResidence"/>
+                <field property="approximateAge"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

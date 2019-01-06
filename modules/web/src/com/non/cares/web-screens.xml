@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <screen id="cares$Person.browse"
+            template="com/non/cares/web/person/person-browse.xml"/>
+    <screen id="cares$Person.edit"
+            template="com/non/cares/web/person/person-edit.xml"/>
+    <screen id="cares$IncidentReport.browse"
+            template="com/non/cares/web/incidentreport/incident-report-browse.xml"/>
+    <screen id="cares$Allegation.edit"
+            template="com/non/cares/web/allegation/allegation-edit.xml"/>
+    <screen id="cares$IncidentReport.edit"
+            template="com/non/cares/web/incidentreport/incident-report-edit.xml"/>
+    <screen id="cares$Allegation.browse"
+            template="com/non/cares/web/allegation/allegation-browse.xml"/>
+    <screen id="cares$Perpetrator.browse"
+            template="com/non/cares/web/perpetrator/perpetrator-browse.xml"/>
+    <screen id="cares$Perpetrator.edit"
+            template="com/non/cares/web/perpetrator/perpetrator-edit.xml"/>
+    <screen id="cares$Reporter.browse"
+            template="com/non/cares/web/reporter/reporter-browse.xml"/>
+    <screen id="cares$Reporter.edit"
+            template="com/non/cares/web/reporter/reporter-edit.xml"/>
+    <screen id="cares$Victim.browse"
+            template="com/non/cares/web/victim/victim-browse.xml"/>
+    <screen id="cares$Victim.edit"
+            template="com/non/cares/web/victim/victim-edit.xml"/>
+</screen-config>

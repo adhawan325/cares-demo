@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.non.cares.web.reporter.ReporterEdit"
+        datasource="reporterDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.non.cares.web.reporter">
+    <dsContext>
+        <datasource id="reporterDs"
+                    class="com.non.cares.entity.Reporter"
+                    view="reporter-view"/>
+        <collectionDatasource id="reporterRelationshipToChildDs"
+                              class="com.non.rda.entity.ReferenceData">
+            <query>
+                <![CDATA[select e from nonrda$ReferenceData e 
+where e.referenceCategory = 'reporterRelationshipToChild'
+order by e.sortOrder]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <groupBox showAsPanel="true"
+                  spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="reporterDs">
+                <column width="250px">
+                    <field property="firstName"/>
+                    <field optionsDatasource="reporterRelationshipToChildDs"
+                           property="relationshipToChild"/>
+                </column>
+                <column>
+                    <field property="lastName"/>
+                    <field property="anonymous"/>
+                </column>
+            </fieldGroup>
+            <frame id="windowActions"
+                   screen="editWindowActions"
+                   width="AUTO"/>
+        </groupBox>
+    </layout>
+</window>

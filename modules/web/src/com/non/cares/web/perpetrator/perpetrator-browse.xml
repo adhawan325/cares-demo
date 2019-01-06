@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.non.cares.web.perpetrator.PerpetratorBrowse"
+        focusComponent="perpetratorsTable"
+        lookupComponent="perpetratorsTable"
+        messagesPack="com.non.cares.web.perpetrator">
+    <dsContext>
+        <groupDatasource id="perpetratorsDs"
+                         class="com.non.cares.entity.Perpetrator"
+                         view="_local">
+            <query>
+                <![CDATA[select e from cares$Perpetrator e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="perpetratorsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="perpetratorsTable"
+                datasource="perpetratorsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="perpetratorsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="approximateAge"/>
+            </columns>
+            <rows datasource="perpetratorsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="perpetratorsTable.create"/>
+                <button id="editBtn"
+                        action="perpetratorsTable.edit"/>
+                <button id="removeBtn"
+                        action="perpetratorsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

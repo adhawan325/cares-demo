@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.non.cares.web.victim.VictimBrowse"
+        focusComponent="victimsTable"
+        lookupComponent="victimsTable"
+        messagesPack="com.non.cares.web.victim">
+    <dsContext>
+        <groupDatasource id="victimsDs"
+                         class="com.non.cares.entity.Victim"
+                         view="victim-view">
+            <query>
+                <![CDATA[select e from cares$Victim e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="victimsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="victimsTable"
+                datasource="victimsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="victimsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="firstName"/>
+                <column id="lastName"/>
+                <column id="approximateAge"/>
+                <column id="countyOfResidence"/>
+            </columns>
+            <rows datasource="victimsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="victimsTable.create"/>
+                <button id="editBtn"
+                        action="victimsTable.edit"/>
+                <button id="removeBtn"
+                        action="victimsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

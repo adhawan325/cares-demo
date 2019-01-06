@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.non.cares.web.allegation.AllegationEdit"
+        datasource="allegationDs"
+        messagesPack="com.non.cares.web.allegation">
+    <dsContext>
+        <datasource id="allegationDs"
+                    class="com.non.cares.entity.Allegation"
+                    view="allegation-view">
+            <collectionDatasource id="victimDs"
+                                  property="victim"/>
+            <collectionDatasource id="typeDs"
+                                  property="type"/>
+            <collectionDatasource id="perpetratorDs"
+                                  property="perpetrator"/>
+        </datasource>
+        <collectionDatasource id="abuseTypeDs"
+                              class="com.non.rda.entity.ReferenceData">
+            <query>
+                <![CDATA[select e from nonrda$ReferenceData e where e.referenceCategory = 'abuseType'
+order by e.sortOrder]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <scrollBox id="mainScrollBox"
+                   height="100%"
+                   margin="true"
+                   spacing="true">
+            <groupBox id="typeBox"
+                      caption="msg://com.non.cares.entity/Allegation.type"
+                      showAsPanel="true">
+                <optionsGroup id="allegationType"
+                              caption="Allegation Type"
+                              datasource="allegationDs"
+                              multiselect="true"
+                              optionsDatasource="abuseTypeDs"
+                              orientation="horizontal"
+                              property="type"/>
+            </groupBox>
+            <groupBox id="allegationDescriptionBox"
+                      caption="Allegation Description"
+                      showAsPanel="true"
+                      spacing="true">
+                <label id="descriptionInstruction"
+                       htmlEnabled="true"
+                       stylename="bold colored"
+                       value="msg://descriptionInstructionLabel"/>
+                <richTextArea datasource="allegationDs"
+                              property="description"/>
+            </groupBox>
+            <groupBox id="victimBox"
+                      caption="msg://com.non.cares.entity/Allegation.victim"
+                      showAsPanel="true">
+                <table id="victimTable"
+                       height="200px"
+                       width="100%">
+                    <actions>
+                        <action id="add"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="firstName"/>
+                        <column id="lastName"/>
+                        <column id="approximateAge"/>
+                    </columns>
+                    <rows datasource="victimDs"/>
+                    <buttonsPanel>
+                        <button action="victimTable.add"/>
+                        <button action="victimTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <groupBox id="perpetratorBox"
+                      caption="Perpetrator"
+                      showAsPanel="true">
+                <table id="perpetratorTable"
+                       height="200px"
+                       width="100%">
+                    <actions>
+                        <action id="add"/>
+                        <action id="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="firstName"/>
+                        <column id="lastName"/>
+                        <column id="approximateAge"/>
+                    </columns>
+                    <rows datasource="perpetratorDs"/>
+                    <buttonsPanel>
+                        <button action="perpetratorTable.add"/>
+                        <button action="perpetratorTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </groupBox>
+            <frame id="windowActions"
+                   screen="editWindowActions"/>
+        </scrollBox>
+    </layout>
+</window>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config xmlns="http://schemas.haulmont.com/cuba/fts.xsd">
+    <entities>
+        <entity class="com.non.cares.entity.Person">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.non.cares.entity.IncidentReport">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.non.cares.entity.Allegation">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.non.cares.entity.Victim">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.non.cares.entity.Reporter">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.non.cares.entity.Perpetrator">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>
