@@ -146,6 +146,18 @@ configure(coreModule) {
         dbUser = 'sa'
         dbPassword = ''
     }
+
+    task startTestDb(type: CubaHsqlStart) {
+        dbName = 'caresTest'
+    }
+
+    task createTestDb(dependsOn: assemble, type: CubaDbCreation) {
+        dbms = 'hsql'
+        host = 'localhost'
+        dbName = 'caresTest'
+        dbUser = 'sa'
+        dbPassword = ''
+    }
 }
     
 configure(webModule) {
