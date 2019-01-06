@@ -22,6 +22,9 @@ buildscript {
         maven {
             url  "https://dl.bintray.com/adhawan325/cuba-reference-data-addon"
         }
+        maven {
+            url  "https://dl.bintray.com/adhawan325/cuba-duplicate-tools-addon"
+        }
         
     }
     dependencies {
