@@ -18,6 +18,10 @@ buildscript {
                 password(rootProject.hasProperty('premiumRepoPass') ? rootProject['premiumRepoPass'] : System.getenv('CUBA_PREMIUM_PASSWORD'))
             }
         }
+
+        maven {
+            url  "https://dl.bintray.com/adhawan325/cuba-reference-data-addon"
+        }
         
     }
     dependencies {
@@ -56,8 +60,8 @@ dependencies {
     appComponent("com.haulmont.bpm:bpm-global:$cubaVersion")
     appComponent("de.diedavids.cuba.wizard:wizard-global:0.1.0")
     appComponent("com.non.dta:nondta-global:6.10.0")
-    appComponent("com.non.rda:nonrda-global:0.1-SNAPSHOT")
     appComponent("com.haulmont.addon.admintools:cuba-at-global:1.2.1")
+    appComponent("com.non.rda:nonrda-global:6.10.0")
 
 }
 
