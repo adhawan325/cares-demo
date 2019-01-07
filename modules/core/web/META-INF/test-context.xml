@@ -2,7 +2,7 @@
 
     <!-- Database connection -->
     <Resource
-      name="jdbc/CubaDS"
+      name="jdbc/CubaTestDS"
       type="javax.sql.DataSource"
       maxTotal="20"
       maxIdle="2"

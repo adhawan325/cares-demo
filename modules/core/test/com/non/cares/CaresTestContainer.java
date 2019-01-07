@@ -14,7 +14,8 @@ public class CaresTestContainer extends TestContainer {
     public CaresTestContainer() {
         super();
         appComponents = new ArrayList<>(Arrays.asList(
-                "com.haulmont.cuba"
+                "com.haulmont.cuba",
+                "com.non.rda"
                 // add CUBA premium add-ons here
                 // "com.haulmont.bpm",
                 // "com.haulmont.charts",
@@ -34,21 +35,25 @@ public class CaresTestContainer extends TestContainer {
     }
 
     private void initDbProperties() {
-        File contextXmlFile = new File("modules/core/web/META-INF/context.xml");
-        if (!contextXmlFile.exists()) {
+        File contextXmlFile = new File("modules/core/web/META-INF/test-context.xml");
+       /* if (!contextXmlFile.exists()) {
             contextXmlFile = new File("web/META-INF/context.xml");
-        }
-        if (!contextXmlFile.exists()) {
-            throw new RuntimeException("Cannot find 'context.xml' file to read database connection properties. " +
+        }*/
+        /*if (!contextXmlFile.exists()) {
+            throw new RuntimeException("Cannot find 'test-context.xml' file to read database connection properties. " +
                     "You can set them explicitly in this method.");
         }
         Document contextXmlDoc = Dom4j.readDocument(contextXmlFile);
         Element resourceElem = contextXmlDoc.getRootElement().element("Resource");
-
-        dbDriver = resourceElem.attributeValue("driverClassName");
+*/
+       /* dbDriver = resourceElem.attributeValue("driverClassName");
         dbUrl = resourceElem.attributeValue("url");
         dbUser = resourceElem.attributeValue("username");
-        dbPassword = resourceElem.attributeValue("password");
+        dbPassword = resourceElem.attributeValue("password");*/
+       dbDriver = "org.hsqldb.jdbc.JDBCDriver";
+        dbUrl="jdbc:hsqldb:hsql://localhost/caresTest";
+        dbUser="sa";
+        dbPassword="";
     }
 
     public static class Common extends CaresTestContainer {
