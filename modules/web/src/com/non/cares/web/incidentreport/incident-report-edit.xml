@@ -18,6 +18,12 @@
                 <![CDATA[select e from nonrda$ReferenceData e where e.referenceCategory = 'contactMethod']]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="statusDs"
+                              class="com.non.rda.entity.ReferenceData">
+            <query>
+                <![CDATA[select e from nonrda$ReferenceData e where e.referenceCategory = 'status']]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -32,6 +38,9 @@
                        property="contactMethod"/>
                 <field property="reporter"/>
                 <field property="isMandatoryReporter"/>
+                <field editable="false"
+                        optionsDatasource="statusDs"
+                       property="status"/>
             </column>
         </fieldGroup>
         <groupBox id="allegationBox"
@@ -56,6 +65,13 @@
                 </buttonsPanel>
             </table>
         </groupBox>
+        <groupBox caption="Process Actions"
+                  spacing="true"
+                  width="800px">
+            <frame id="procActionsFrame"
+                   screen="procActionsFrame"/>
+        </groupBox>
+
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

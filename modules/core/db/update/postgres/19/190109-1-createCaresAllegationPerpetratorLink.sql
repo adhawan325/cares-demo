@@ -1,0 +1,5 @@
+create table CARES_ALLEGATION_PERPETRATOR_LINK (
+    ALLEGATION_ID uuid,
+    PERPETRATOR_ID uuid,
+    primary key (ALLEGATION_ID, PERPETRATOR_ID)
+);

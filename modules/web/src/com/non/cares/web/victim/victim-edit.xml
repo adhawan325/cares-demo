@@ -19,6 +19,12 @@ and a MEMBER OF e.allegation
 and v MEMBER OF a.victim]]>
             </query>
         </collectionDatasource>
+        <collectionDatasource id="countyOfResidenceDs"
+                              class="com.non.rda.entity.ReferenceData">
+            <query>
+                <![CDATA[select e from nonrda$ReferenceData e where e.referenceCategory = 'countyOfResidence']]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -36,7 +42,8 @@ and v MEMBER OF a.victim]]>
                     </column>
                     <column>
                         <field property="lastName"/>
-                        <field property="countyOfResidence"/>
+                        <field optionsDatasource="countyOfResidenceDs"
+                               property="countyOfResidence"/>
                     </column>
                 </fieldGroup>
             </groupBox>
@@ -45,7 +52,7 @@ and v MEMBER OF a.victim]]>
                       showAsPanel="true"
                       spacing="true">
                 <table id="incidentsTable"
-                       width="800px">
+                       width="80%">
                     <actions>
                         <action id="edit"/>
                     </actions>
@@ -59,6 +66,7 @@ and v MEMBER OF a.victim]]>
                         <column id="contactMethod"/>
                         <column id="createTs"
                                 caption="Reported On"/>
+                        <column id="status"/>
                     </columns>
                     <rows datasource="incidentReportsDs"/>
                     <rowsCount/>

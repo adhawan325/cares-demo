@@ -15,7 +15,9 @@ import com.haulmont.chile.core.annotations.Composition;
 import java.util.List;
 import javax.persistence.OneToMany;
 import com.haulmont.chile.core.annotations.NamePattern;
+import com.haulmont.cuba.core.entity.annotation.Listeners;
 
+@Listeners("cares_IncidentReportEntityListener")
 @NamePattern("%s %s %s|contactMethod,reporter,allegation")
 @Table(name = "CARES_INCIDENT_REPORT")
 @Entity(name = "cares$IncidentReport")
@@ -42,6 +44,19 @@ public class IncidentReport extends StandardEntity {
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "incidentReport")
     protected List<Allegation> allegation;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "STATUS_ID")
+    protected ReferenceData status;
+
+    public void setStatus(ReferenceData status) {
+        this.status = status;
+    }
+
+    public ReferenceData getStatus() {
+        return status;
+    }
+
 
     public Reporter getReporter() {
         return reporter;

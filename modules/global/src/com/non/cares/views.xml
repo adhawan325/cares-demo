@@ -23,6 +23,8 @@
         </property>
         <property name="contactMethod"
                   view="_minimal"/>
+        <property name="status"
+                  view="_minimal"/>
     </view>
     <view class="com.non.cares.entity.Allegation"
           extends="_local"

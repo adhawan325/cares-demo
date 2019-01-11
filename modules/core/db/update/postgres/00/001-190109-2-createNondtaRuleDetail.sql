@@ -1,0 +1,2 @@
+alter table NONDTA_RULE_DETAIL add constraint FK_NONDTA_RULE_DETAIL_ON_RULE foreign key (RULE_ID) references NONDTA_RULE(ID);
+create index IDX_NONDTA_RULE_DETAIL_ON_RULE on NONDTA_RULE_DETAIL (RULE_ID);

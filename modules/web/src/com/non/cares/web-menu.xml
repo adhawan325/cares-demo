@@ -2,24 +2,21 @@
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-cares">
         <item screen="cares$IncidentReport.browse"
-              shortcut="ALT-C"/>
-        <item screen="wizard-example-1"/>
+              shortcut="ALT-I"/>
+        <item screen="cares$Perpetrator.browse" shortcut="ALT-P"/>
+        <item screen="cares$Reporter.browse" shortcut="ALT-R"/>
+        <item screen="cares$Victim.browse" shortcut="ALT-V"/>
+
         <separator/>
         <item id="sec$ScreenHistory.browse"/>
         <item id="settings"/>
-        <!--  <item screen="crm$Note.browse"/>-->
-        <!--<item screen="crm$PRARequest.calendar"/>-->
-        <item screen="cares$Perpetrator.browse"/>
-        <item screen="cares$Reporter.browse"/>
-        <item screen="cares$Victim.browse"/>
     </menu>
     <menu id="manage-workflow">
         <item screen="bpm$ProcTask.lookup"/>
     </menu>
-    <menu id="Reports">
-        <item screen="report$Report.run"/>
+<!--    <menu id="Reports">
         <item id="sys$FileDescriptor.browse"/>
-    </menu>
+    </menu>-->
     <menu id="System Administration">
         <menu id="User Administration">
             <item screen="sec$User.browse"/>
@@ -67,28 +64,6 @@
                 <item id="jpqlConsole"/>
                 <item id="ddcrd$DiagnoseExecutionLog.browse"/>
             </menu>
-            <!--
-        <menu id="adminTools"
-              insertAfter="consoleMenu">
-            <item id="scriptGenerator"
-                  openType="NEW_TAB"
-                  screen="admintools$scriptGeneratorsResult"/>
-            <item id="shellExecutor"
-                  openType="NEW_TAB"
-                  screen="shell-executor"/>
-            <item id="sshTerminal"
-                  openType="NEW_TAB"
-                  screen="ssh-terminal"/>
-            <item id="configLoader"
-                  openType="DIALOG"
-                  screen="admintools$configLoader"/>
-            <separator/>
-            <item id="consoleScriptLoader"
-                  openType="NEW_TAB"
-                  screen="console-script-loader"/>
-        </menu>
--->
-            <separator/>
         </menu>
         <separator/>
         <menu id="help">

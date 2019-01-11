@@ -59,18 +59,16 @@ cuba {
 
 dependencies {
     appComponent("com.haulmont.cuba:cuba-global:$cubaVersion")
-    appComponent("com.haulmont.reports:reports-global:$cubaVersion")
     appComponent("com.haulmont.fts:fts-global:$cubaVersion")
-    appComponent("com.haulmont.charts:charts-global:$cubaVersion")
     appComponent("com.haulmont.bpm:bpm-global:$cubaVersion")
-    appComponent("de.diedavids.cuba.wizard:wizard-global:0.1.0")
     appComponent("com.non.dta:nondta-global:6.10.0")
     appComponent("com.haulmont.addon.admintools:cuba-at-global:1.2.1")
     appComponent("com.non.rda:nonrda-global:6.10.0")
+    appComponent("com.haulmont.reports:reports-global:$cubaVersion")
 
 }
 
-def hsql = 'org.hsqldb:hsqldb:2.2.9'
+def postgres = 'org.postgresql:postgresql:9.4.1212'
 
 configure([globalModule, coreModule, webModule]) {
     apply(plugin: 'java')
@@ -112,8 +110,8 @@ configure(coreModule) {
     dependencies {
         compile(globalModule)
         provided(servletApi)
-        jdbc(hsql)
-        testRuntime(hsql)
+        jdbc(postgres)
+        testRuntime(postgres)
 
     }
 
@@ -134,19 +132,19 @@ configure(coreModule) {
     }
 
     task createDb(dependsOn: assembleDbScripts, description: 'Creates local database', type: CubaDbCreation) {
-        dbms = 'hsql'
-        host = 'localhost'
-        dbName = 'cares'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbms = 'postgres'
+        host = '216.154.219.170'
+        dbName = 'postgres'
+        dbUser = 'webadmin'
+        dbPassword = 'NEQoil37821'
     }
 
     task updateDb(dependsOn: assembleDbScripts, description: 'Updates local database', type: CubaDbUpdate) {
-        dbms = 'hsql'
-        host = 'localhost'
-        dbName = 'cares'
-        dbUser = 'sa'
-        dbPassword = ''
+        dbms = 'postgres'
+        host = '216.154.219.170'
+        dbName = 'postgres'
+        dbUser = 'webadmin'
+        dbPassword = 'NEQoil37821'
     }
 
     task startTestDb(type: CubaHsqlStart) {
@@ -241,4 +239,21 @@ task restart(dependsOn: ['stop', ":${modulePrefix}-core:deploy", ":${modulePrefi
 
 task wrapper(type: Wrapper) {
     gradleVersion = '4.3.1'
+}
+
+task jelasticBuildWar(type: CubaWarBuilding) {
+    coreContextXmlPath = 'modules/core/web/META-INF/jelastic-context.xml'
+    appHome = '..'
+    webXmlPath = 'modules/web/web/WEB-INF/single-war-web.xml'
+    appProperties = ['cuba.automaticDatabaseUpdate' : true,
+'cuba.logDir' : '${catalina.base}/logs']
+    includeJdbcDriver = true
+    includeContextXml = true
+}
+
+task jelasticDeployWar(type: CubaJelasticDeploy, dependsOn: jelasticBuildWar) {
+    email = rootProject.hasProperty('jelasticEmail') ? rootProject['jelasticEmail'] : ''
+    password = rootProject.hasProperty('jelasticPassword') ? rootProject['jelasticPassword'] : ''
+    hostUrl = 'app.jelastic.eapps.com'
+    environment = 'cares-demo'
 }

@@ -33,10 +33,8 @@
             <columns>
                 <column id="firstName"/>
                 <column id="lastName"/>
-                <column id="countyOfResidence"/>
                 <column id="anonymous"/>
                 <column id="relationshipToChild"/>
-                <column id="approximateAge"/>
             </columns>
             <rows datasource="reportersDs"/>
             <rowsCount/>
